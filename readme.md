@@ -1,36 +1,16 @@
 # RAG App - Local Retrieval-Augmented Generation with HuggingFace, Qdrant, and LangChain
 ## A fast, fully local Retrieval-Augmented Generation (RAG) system built using open-source components:
 
-## Embedding Model: BAAI/bge-large-en-v1.5
-
-## LLM: TinyLlama/TinyLlama-1.1B-Chat-v1.0
-
-## Vector Store: Embedded Qdrant (no cloud API needed)
-
-## Reranking: `cross-encoder/ms-marco-MiniLM-L-6-v2`
-## Interface: FastAPI (`main.py`)
-## Framework: LangChain
+### Embedding Model: BAAI/bge-large-en-v1.5
+### LLM: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+### Vector Store: Embedded Qdrant (no cloud API needed)
+### Reranking: `cross-encoder/ms-marco-MiniLM-L-6-v2`
+### Interface: FastAPI (`main.py`)
+### Framework: LangChain
 
 ## Project Structure
 
-rag_app/
-├── app/
-│ ├── config.py # Loads and validates config.yaml
-│ ├── ingest.py # Parses, splits, embeds, and stores PDFs
-│ ├── models.py # Loads embedding + LLM models
-│ ├── query.py # RAG pipeline with deduplication + reranking
-│ ├── logger.py # Custom logger with formatting
-│ └── evaluate.py # Automated evaluation with BLEU, ROUGE, BERTScore
-├── config/
-│ └── config.yaml # All configs (models, paths, etc.)
-├── data/
-│ └── documents/ # Place your PDF documents here
-├── main.py # FastAPI endpoint
-├── test/
-│ ├── test_dataset.csv # Test Q&A pairs for eval
-│ └── qag_score_results.json # Output of evaluation
-├── requirements.txt
-└── README.md
+<pre> ``` rag_app/ ├── app/ │ ├── config.py # Loads and validates config.yaml │ ├── ingest.py # Parses, splits, embeds, and stores PDFs │ ├── models.py # Loads embedding + LLM models │ ├── query.py # RAG pipeline with deduplication + reranking │ ├── logger.py # Custom logger with formatting │ └── evaluate.py # Automated evaluation with BLEU, ROUGE, BERTScore ├── config/ │ └── config.yaml # All configs (models, paths, etc.) ├── data/ │ └── documents/ # Place your PDF documents here ├── main.py # FastAPI endpoint ├── test/ │ ├── test_dataset.csv # Test Q&A pairs for eval │ └── qag_score_results.json # Output of evaluation ├── requirements.txt └── README.md ``` </pre>
 
 
 ## Setup
@@ -45,7 +25,7 @@ Edit config/config.yaml:
 3. Place PDFs
 Put your documents inside ./data/documents/.
 
-##Run
+## Run
 1. Ingest and Index PDFs
 
 python -m app.ingest
