@@ -1,17 +1,17 @@
-#RAG App - Local Retrieval-Augmented Generation with HuggingFace, Qdrant, and LangChain
-##A fast, fully local Retrieval-Augmented Generation (RAG) system built using open-source components:
+# RAG App - Local Retrieval-Augmented Generation with HuggingFace, Qdrant, and LangChain
+## A fast, fully local Retrieval-Augmented Generation (RAG) system built using open-source components:
 
-##Embedding Model: BAAI/bge-large-en-v1.5
+## Embedding Model: BAAI/bge-large-en-v1.5
 
-##LLM: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+## LLM: TinyLlama/TinyLlama-1.1B-Chat-v1.0
 
-##Vector Store: Embedded Qdrant (no cloud API needed)
+## Vector Store: Embedded Qdrant (no cloud API needed)
 
-##Reranking: `cross-encoder/ms-marco-MiniLM-L-6-v2`
-##Interface: FastAPI (`main.py`)
-##Framework: LangChain
+## Reranking: `cross-encoder/ms-marco-MiniLM-L-6-v2`
+## Interface: FastAPI (`main.py`)
+## Framework: LangChain
 
-##Project Structure
+## Project Structure
 
 rag_app/
 ├── app/
@@ -33,7 +33,7 @@ rag_app/
 └── README.md
 
 
-##Setup
+## Setup
 1. Clone + Install Dependencies
 clone from :  https://github.com/nikhilraj-1/rag-with-reranker
 cd rag_app
@@ -57,7 +57,7 @@ This will Load and split PDFs, Embed chunks and Store them in local Qdrant.
 uvicorn main:app --reload
 Go to http://localhost:8000.
 
-##Query it via:
+## Query it via:
 
 GET /ask?q=your+question
 
@@ -65,7 +65,7 @@ Example:
 
 curl "http://localhost:8000/ask?q=What+is+hypertension?"
 
-#How It Works
+# How It Works
 
                           ┌──────────────────────────┐
                           │        config.yaml       │
@@ -97,7 +97,7 @@ curl "http://localhost:8000/ask?q=What+is+hypertension?"
                                        │
                           ┌────────────▼────────────┐
                           │     Qdrant (local)      │
-                          │(Vectors stored by chunks│
+                          │ Vectors stored by chunks│
                           └─────────────────────────┘
 
 
@@ -148,14 +148,14 @@ curl "http://localhost:8000/ask?q=What+is+hypertension?"
 
 
 
-##Ingestion Pipeline (app/ingest.py)
+## Ingestion Pipeline (app/ingest.py)
 PDFs parsed and chunked using CHUNK_SIZE + CHUNK_OVERLAP
 
 Embeddings computed using BAAI/bge-large-en-v1.5
 
 Embedded chunks stored in local Qdrant collection
 
-##Query Flow (app/query.py)
+## Query Flow (app/query.py)
 Semantic Search via Qdrant (TOP_K)
 
 Deduplication using cosine similarity threshold (DEDUPLICATION_THRESHOLD)
@@ -167,7 +167,7 @@ Filtering: Only keep chunks above SCORE_THRESHOLD
 LLM Response: RAG prompt sent to TinyLlama using LangChain + HF pipeline
 
 
-##Evaluation 
+## Evaluation 
 Place your test dataset as CSV at test/test_dataset.csv with columns:
 question, expected_answer.
 
@@ -189,13 +189,13 @@ sample run on two questions : "average_bleu_score": 30.660274527412263,
   "average_qag_score": 68.71147180447443,
   "average_confidence": 6.922852072051732
 
-##The metrics suggests: 
+## The metrics suggests: 
 
 Retrieval is top-notch — high BERT-F1 and QAG back that up.
 The LLM is semantically right, though surface overlap (BLEU, ROUGE) isn't as high — expected for small models.
 System is reliable and accurate, even with lightweight generation.
 
-##Features
+## Features
 Works entirely offline (embedded Qdrant + local Hugging Face models)
 
 Supports CPU, MPS (Apple), and CUDA acceleration
@@ -206,7 +206,7 @@ Plug-and-play config system
 
 Modular codebase with separation of ingestion, querying, and evaluation
 
-##Requirements
+## Requirements
 Python 3.9+
 
 Memory: ~16 GB RAM recommended (esp. for reranking)
@@ -215,14 +215,14 @@ Storage: Disk space for models and vector DB
 
 OS: macOS, Linux, or WSL2 on Windows
 
-##Notes
+## Notes
 Model quantization is enabled automatically if CUDA is available.
 
 Documents with invalid or zero embeddings are skipped.
 
 Chunk sizes and overlap can be tuned via config.yaml.
 
-##TODO
+## TODO
  Streamed responses with token-by-token generation
 
  Add Gradio/Streamlit frontend
@@ -231,8 +231,8 @@ Chunk sizes and overlap can be tuned via config.yaml.
 
  Docker support for deployment
 
-##License
+## License
 MIT License. Feel free to use, modify, and share.
 
-##Author
+## Author
 Nikhil Raj
