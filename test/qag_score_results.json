@@ -1,0 +1,35 @@
+{
+  "average_bleu_score": 30.660274527412263,
+  "average_rouge_l_score": 0.5617386489479512,
+  "average_bert_f1_score": 0.9145451486110687,
+  "average_qag_score": 68.71147180447443,
+  "average_confidence": 6.922852072051732,
+  "results": [
+    {
+      "query": "What is the purpose of the Evidence of Coverage document?",
+      "ground_truth": "The Evidence of Coverage document explains how to get medical care and prescription drugs, your rights and responsibilities, what is covered, what you pay as a member, and how to file a complaint if not satisfied.",
+      "generated_answer": " The Evidence of Coverage document tells you how to get your medical care and prescription drugs. It explains your rights and\nresponsibilities, what is covered, what you pay as a member of the plan, and how to file a complaint if you are not satisfied with a\ndecision or treatment.",
+      "bleu_score": 54.05573009475681,
+      "rouge_l_score": 0.813953488372093,
+      "bert_f1_score": 0.9557280540466309,
+      "qag_score": 83.0161533724457,
+      "confidence": 13.845704144103465,
+      "reasoning": "High QAG score: Answer closely matches ground truth in content and semantics.",
+      "retrieved_docs": [],
+      "reranked_docs": []
+    },
+    {
+      "query": "What is a clinical research study in the context of Cigna Preferred Plus Medicare (HMO)?",
+      "ground_truth": "A clinical research study, or clinical trial, is a way doctors and scientists test new medical care, like a new cancer drug, and Medicare-approved studies cover most costs for routine services received as part of the study.",
+      "generated_answer": " A clinical research study is a study that involves testing new treatments, medical devices, or medical procedures to determine their effectiveness, safety, and/or quality. The study may involve participants who are enrolled in a Medicare-approved HMO plan, such as Cigna Preferred Plus Medicare (HMO).",
+      "bleu_score": 7.264818960067717,
+      "rouge_l_score": 0.30952380952380953,
+      "bert_f1_score": 0.8733622431755066,
+      "qag_score": 54.406790236503156,
+      "confidence": 0,
+      "reasoning": "Moderate QAG score: Answer is partially correct but may lack detail or exact phrasing. High BERTScore indicates good semantic match, but lower BLEU/ROUGE-L suggests minor content gaps. Low confidence due to high metric disagreement (e.g., BERTScore high, BLEU/ROUGE low).",
+      "retrieved_docs": [],
+      "reranked_docs": []
+    }
+  ]
+}
